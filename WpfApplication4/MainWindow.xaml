@@ -1,0 +1,33 @@
+﻿<Window x:Class="WpfApplication4.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApplication4"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="213.337" Width="308.855">
+    <Grid Margin="0,0,0,-5" HorizontalAlignment="Left" Width="299">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="268*"/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBox x:Name="Tbreloj" HorizontalAlignment="Left" Height="20" Margin="44,42,0,0" TextWrapping="Wrap" Text="00:00" VerticalAlignment="Top" Width="40"/>
+        <TextBox x:Name="Tbalarm" HorizontalAlignment="Left" Height="19" Margin="44,77,0,0" TextWrapping="Wrap" Text="00:00" VerticalAlignment="Top" Width="40"/>
+        <Label x:Name="Lbtime" HorizontalAlignment="Left" Height="28" Margin="0,40,0,0"  VerticalAlignment="Top" Width="39" >Time:</Label>
+        <Label x:Name="Lbalaram" HorizontalAlignment="Left" Height="28" Margin="0,73,0,0"  VerticalAlignment="Top" Width="48" >Alarm:</Label>
+        <Menu x:Name="Mfitxer" HorizontalAlignment="Left" Height="27" VerticalAlignment="Top" Width="299" Grid.ColumnSpan="2" Margin="0,0,-149,0" >
+            <MenuItem Header="Fitxer"  >
+                <MenuItem Header="sortir" Click="sortir"/>
+            </MenuItem>
+            <MenuItem Header="Ajuda" Height="27" Width="47" >
+                <MenuItem  Header="sobre aquest programa" Click="ajuda"/>
+            </MenuItem>
+            <MenuItem Header="Alarma" Height="27" Width="154" >
+                <RadioButton x:Name="Rbactivar_alarma" Content="Activar alarma" HorizontalAlignment="Left" VerticalAlignment="Top" Checked="RbactAlarmCheck" />
+                <RadioButton x:Name="Rbdesactivar_alarma" Content="desactivar alarma" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,1,0,0" Checked="RbdesactAlarmCheck"/>
+            </MenuItem>
+        </Menu>
+
+    </Grid>
+</Window>
