@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 
 namespace WpfApplication4
@@ -29,15 +31,29 @@ namespace WpfApplication4
         int timesTicked = 1;
         int timesToTick = 10;
         String selectalarm;
+        Alarma alarma = new Alarma();
+        const string FileName = @"..\..\SavedAlarm.bin";
 
 
-
+        //
         public MainWindow()
         {
             InitializeComponent();
             DispatcherTimerSetup();
+            if (File.Exists(FileName))
+            {
+                Stream TestFileStream = File.OpenRead(FileName);
+                BinaryFormatter deserializer = new BinaryFormatter();
+                alarma = (Alarma)deserializer.Deserialize(TestFileStream);
+                TestFileStream.Close();
+            }
+
+            Tbalarm.Text = alarma.gethora();
+
 
         }
+
+       
         public void DispatcherTimerSetup()
         {
             dispatcherTimer = new DispatcherTimer();
@@ -85,6 +101,14 @@ namespace WpfApplication4
         {
             Rbdesactivar_alarma.IsChecked = false;
             selectalarm = Tbalarm.Text;
+            alarma.sethora(selectalarm);
+
+
+           Stream TestFileStream = File.Create(FileName);
+           BinaryFormatter serializer = new BinaryFormatter();
+           serializer.Serialize(TestFileStream, alarma);
+           TestFileStream.Close();
+
         }
 
         private void RbdesactAlarmCheck(object sender, RoutedEventArgs e)
@@ -92,6 +116,8 @@ namespace WpfApplication4
             Rbactivar_alarma.IsChecked = false;
         }
 
+
         
+
     }
 }

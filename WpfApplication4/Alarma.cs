@@ -6,35 +6,27 @@ using System.Threading.Tasks;
 
 namespace WpfApplication4
 {
-    class Alarma : System.ComponentModel.INotifyPropertyChanged
+    [Serializable()]
+    class Alarma 
     {
-        public double LoanAmount { get; set; }
-        public double InterestRate { get; set; }
-        public int Term { get; set; }
 
-        private string p_Customer;
-        public string Customer
+        private String hora;
+
+        public Alarma()
         {
-            get { return p_Customer; }
-            set
-            {
-                p_Customer = value;
-                PropertyChanged(this,
-                  new System.ComponentModel.PropertyChangedEventArgs("Customer"));
-            }
+            
         }
 
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-
-        public Alarma(double loanAmount,
-                    double interestRate,
-                    int term,
-                    string customer)
+        public String gethora()
         {
-            this.LoanAmount = loanAmount;
-            this.InterestRate = interestRate;
-            this.Term = term;
-            p_Customer = customer;
+           return this.hora; 
         }
+
+        public void sethora(String hora)
+        {
+            this.hora = hora;
+        }
+
+       
     }
 }
